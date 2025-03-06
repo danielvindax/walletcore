@@ -1,5 +1,5 @@
 {
-  "name": "@metamask/core-monorepo",
+  "name": "@danielvindax/core-monorepo",
   "version": "317.0.0",
   "private": true,
   "description": "Monorepo for packages shared between MetaMask clients",
