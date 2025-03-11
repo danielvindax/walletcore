@@ -1,6 +1,6 @@
 {
   "name": "@danielvindax/network-controller",
-  "version": "22.2.2",
+  "version": "22.2.3",
   "description": "Provides an interface to the currently selected network via a MetaMask-compatible provider object",
   "keywords": [
     "MetaMask",
@@ -8,7 +8,7 @@
   ],
   "homepage": "https://github.com/danielvindax/core/tree/main/packages/network-controller#readme",
   "bugs": {
-    "url": "https://github.com/MetaMask/core/issues"
+    "url": "https://github.com/danielvindax/walletcore/issues"
   },
   "repository": {
     "type": "git",
