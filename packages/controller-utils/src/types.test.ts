@@ -14,6 +14,7 @@ describe('types', () => {
     expect(isNetworkType(NetworkType['linea-goerli'])).toBe(true);
     expect(isNetworkType(NetworkType['linea-sepolia'])).toBe(true);
     expect(isNetworkType(NetworkType['linea-mainnet'])).toBe(true);
+    expect(isNetworkType(NetworkType['allchain-mainnet'])).toBe(true);
     expect(isNetworkType(NetworkType.rpc)).toBe(true);
   });
 });

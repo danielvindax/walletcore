@@ -48,6 +48,7 @@ export const TESTNET_TICKER_SYMBOLS = {
   SEPOLIA: 'SepoliaETH',
   LINEA_GOERLI: 'LineaETH',
   LINEA_SEPOLIA: 'LineaETH',
+  ALLCHAIN: 'AllChain',
 };
 
 /**
@@ -94,6 +95,13 @@ export const BUILT_IN_NETWORKS = {
     ticker: NetworksTicker['linea-mainnet'],
     rpcPrefs: {
       blockExplorerUrl: 'https://lineascan.build',
+    },
+  },
+  [NetworkType['allchain-mainnet']]: {
+    chainId: ChainId['allchain-mainnet'],
+    ticker: NetworksTicker['allchain-mainnet'],
+    rpcPrefs: {
+      blockExplorerUrl: 'https://alltra.global',
     },
   },
   [NetworkType.rpc]: {
@@ -154,4 +162,5 @@ export const CHAIN_ID_TO_ETHERS_NETWORK_NAME_MAP: Record<
   [ChainId['linea-sepolia']]: BuiltInNetworkName.LineaSepolia,
   [ChainId['linea-mainnet']]: BuiltInNetworkName.LineaMainnet,
   [ChainId.aurora]: BuiltInNetworkName.Aurora,
+  [ChainId['allchain-mainnet']]: BuiltInNetworkName.AllchainMainnet,
 };

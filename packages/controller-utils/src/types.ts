@@ -8,6 +8,7 @@ export const InfuraNetworkType = {
   'linea-goerli': 'linea-goerli',
   'linea-sepolia': 'linea-sepolia',
   'linea-mainnet': 'linea-mainnet',
+  'allchain-mainnet': 'allchain-mainnet',
 } as const;
 
 export type InfuraNetworkType =
@@ -58,8 +59,9 @@ export enum BuiltInNetworkName {
   Sepolia = 'sepolia',
   LineaGoerli = 'linea-goerli',
   LineaSepolia = 'linea-sepolia',
-  LineaMainnet = 'linea-mainnet',
+  LineaMainnet = 'linea-mainnet',  
   Aurora = 'aurora',
+  AllchainMainnet = 'allchain-mainnet',
 }
 
 /**
@@ -75,6 +77,7 @@ export const ChainId = {
   [BuiltInNetworkName.LineaGoerli]: '0xe704', // toHex(59140)
   [BuiltInNetworkName.LineaSepolia]: '0xe705', // toHex(59141)
   [BuiltInNetworkName.LineaMainnet]: '0xe708', // toHex(59144)
+  [BuiltInNetworkName.AllchainMainnet]: '0x9F2A4', // toHex(651940)
 } as const;
 export type ChainId = (typeof ChainId)[keyof typeof ChainId];
 
@@ -91,6 +94,7 @@ export enum NetworksTicker {
   'linea-goerli' = 'LineaETH',
   'linea-sepolia' = 'LineaETH',
   'linea-mainnet' = 'ETH',
+  'allchain-mainnet' = 'ALL',
   // TODO: Either fix this lint violation or explain why it's necessary to ignore.
   // eslint-disable-next-line @typescript-eslint/naming-convention
   rpc = '',
@@ -103,6 +107,7 @@ export const BlockExplorerUrl = {
   [BuiltInNetworkName.LineaGoerli]: 'https://goerli.lineascan.build',
   [BuiltInNetworkName.LineaSepolia]: 'https://sepolia.lineascan.build',
   [BuiltInNetworkName.LineaMainnet]: 'https://lineascan.build',
+  [BuiltInNetworkName.AllchainMainnet]: 'https://alltra.global',
 } as const satisfies Record<InfuraNetworkType, string>;
 export type BlockExplorerUrl =
   (typeof BlockExplorerUrl)[keyof typeof BlockExplorerUrl];
@@ -114,6 +119,7 @@ export const NetworkNickname = {
   [BuiltInNetworkName.LineaGoerli]: 'Linea Goerli',
   [BuiltInNetworkName.LineaSepolia]: 'Linea Sepolia',
   [BuiltInNetworkName.LineaMainnet]: 'Linea',
+  [BuiltInNetworkName.AllchainMainnet]: 'All Chain',
 } as const satisfies Record<InfuraNetworkType, string>;
 export type NetworkNickname =
   (typeof NetworkNickname)[keyof typeof NetworkNickname];
