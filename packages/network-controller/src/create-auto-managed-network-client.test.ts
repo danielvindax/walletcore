@@ -1,4 +1,4 @@
-import { BUILT_IN_NETWORKS, NetworkType } from '@metamask/controller-utils';
+import { BUILT_IN_NETWORKS, NetworkType } from '@danielvindax/controller-utils';
 
 import { createAutoManagedNetworkClient } from './create-auto-managed-network-client';
 import * as createNetworkClientModule from './create-network-client';

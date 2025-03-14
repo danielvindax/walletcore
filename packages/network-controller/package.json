@@ -1,6 +1,6 @@
 {
   "name": "@danielvindax/network-controller",
-  "version": "22.2.4",
+  "version": "22.2.6",
   "description": "Provides an interface to the currently selected network via a MetaMask-compatible provider object",
   "keywords": [
     "MetaMask",

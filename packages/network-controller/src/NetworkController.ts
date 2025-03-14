@@ -4,7 +4,7 @@ import type {
   RestrictedMessenger,
 } from '@metamask/base-controller';
 import { BaseController } from '@metamask/base-controller';
-import type { Partialize } from '@metamask/controller-utils';
+import type { Partialize } from '@danielvindax/controller-utils';
 import {
   InfuraNetworkType,
   NetworkType,
@@ -13,7 +13,7 @@ import {
   ChainId,
   NetworksTicker,
   NetworkNickname,
-} from '@metamask/controller-utils';
+} from '@danielvindax/controller-utils';
 import EthQuery from '@metamask/eth-query';
 import { errorCodes } from '@metamask/rpc-errors';
 import { createEventEmitterProxy } from '@metamask/swappable-obj-proxy';

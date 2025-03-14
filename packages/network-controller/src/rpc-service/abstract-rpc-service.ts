@@ -1,4 +1,4 @@
-import type { ServicePolicy } from '@metamask/controller-utils';
+import type { ServicePolicy } from '@danielvindax/controller-utils';
 import type {
   Json,
   JsonRpcParams,

@@ -1,6 +1,6 @@
 import type { JSONRPCResponse } from '@json-rpc-specification/meta-schema';
-import type { InfuraNetworkType } from '@metamask/controller-utils';
-import { BUILT_IN_NETWORKS } from '@metamask/controller-utils';
+import type { InfuraNetworkType } from '@danielvindax/controller-utils';
+import { BUILT_IN_NETWORKS } from '@danielvindax/controller-utils';
 import EthQuery from '@metamask/eth-query';
 import type { Hex } from '@metamask/utils';
 import nock from 'nock';
