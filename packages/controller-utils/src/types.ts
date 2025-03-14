@@ -77,7 +77,7 @@ export const ChainId = {
   [BuiltInNetworkName.LineaGoerli]: '0xe704', // toHex(59140)
   [BuiltInNetworkName.LineaSepolia]: '0xe705', // toHex(59141)
   [BuiltInNetworkName.LineaMainnet]: '0xe708', // toHex(59144)
-  [BuiltInNetworkName.AllchainMainnet]: '0x9F2A4', // toHex(651940)
+  [BuiltInNetworkName.AllchainMainnet]: '0x9f2a4', // toHex(651940)
 } as const;
 export type ChainId = (typeof ChainId)[keyof typeof ChainId];
 
