@@ -119,7 +119,8 @@ export type InfuraRpcEndpoint = {
    * `{infuraProjectId}`, which will get replaced with the Infura project ID
    * when the network client is created.
    */
-  url: `https://${InfuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+  // url: `https://${InfuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+  url: string;
 };
 
 /**
@@ -564,13 +565,12 @@ function getDefaultNetworkConfigurationsByChainId(): Record<
     Record<Hex, NetworkConfiguration>
   >((obj, infuraNetworkType) => {
     const chainId = ChainId[infuraNetworkType];
-    const rpcEndpointUrl =
-      // This ESLint rule mistakenly produces an error.
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}` as const;
-
+    // This ESLint rule mistakenly produces an error.
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    const rpcEndpointUrl = chainId === '0x9f2a4' ? 'https://mainnet-rpc.alltra.global' : `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+    
     const networkConfiguration: NetworkConfiguration = {
-      blockExplorerUrls: [],
+      blockExplorerUrls: chainId === '0x9f2a4' ? ['https://alltra.global'] : [],
       chainId,
       defaultRpcEndpointIndex: 0,
       name: NetworkNickname[infuraNetworkType],
