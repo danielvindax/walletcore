@@ -568,7 +568,7 @@ function getDefaultNetworkConfigurationsByChainId(): Record<
     // This ESLint rule mistakenly produces an error.
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const rpcEndpointUrl = chainId === '0x9f2a4' ? 'https://mainnet-rpc.alltra.global' : `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}`;
-    
+
     const networkConfiguration: NetworkConfiguration = {
       blockExplorerUrls: chainId === '0x9f2a4' ? ['https://alltra.global'] : [],
       chainId,
@@ -799,7 +799,9 @@ function deriveInfuraNetworkNameFromRpcEndpointUrl(
     }
 
     throw new Error(`Unknown Infura network '${match.groups.networkName}'`);
-  }
+  } else if(isInfuraNetworkType("allchain-mainnet")) {
+    return "allchain-mainnet";
+}
 
   throw new Error('Could not derive Infura network from RPC endpoint URL');
 }
@@ -842,9 +844,9 @@ function validateNetworkControllerState(state: NetworkState) {
     const isInvalidDefaultBlockExplorerUrlIndex =
       networkConfiguration.blockExplorerUrls.length > 0
         ? networkConfiguration.defaultBlockExplorerUrlIndex === undefined ||
-          networkConfiguration.blockExplorerUrls[
-            networkConfiguration.defaultBlockExplorerUrlIndex
-          ] === undefined
+        networkConfiguration.blockExplorerUrls[
+        networkConfiguration.defaultBlockExplorerUrlIndex
+        ] === undefined
         : networkConfiguration.defaultBlockExplorerUrlIndex !== undefined;
 
     if (isInvalidDefaultBlockExplorerUrlIndex) {
@@ -855,7 +857,7 @@ function validateNetworkControllerState(state: NetworkState) {
 
     if (
       networkConfiguration.rpcEndpoints[
-        networkConfiguration.defaultRpcEndpointIndex
+      networkConfiguration.defaultRpcEndpointIndex
       ] === undefined
     ) {
       throw new Error(
@@ -1077,8 +1079,8 @@ export class NetworkController extends BaseController<
   getProviderAndBlockTracker(): {
     provider: SwappableProxy<ProxyWithAccessibleTarget<Provider>> | undefined;
     blockTracker:
-      | SwappableProxy<ProxyWithAccessibleTarget<BlockTracker>>
-      | undefined;
+    | SwappableProxy<ProxyWithAccessibleTarget<BlockTracker>>
+    | undefined;
   } {
     return {
       provider: this.#providerProxy,
@@ -1093,9 +1095,9 @@ export class NetworkController extends BaseController<
    */
   getSelectedNetworkClient():
     | {
-        provider: SwappableProxy<ProxyWithAccessibleTarget<Provider>>;
-        blockTracker: SwappableProxy<ProxyWithAccessibleTarget<BlockTracker>>;
-      }
+      provider: SwappableProxy<ProxyWithAccessibleTarget<Provider>>;
+      blockTracker: SwappableProxy<ProxyWithAccessibleTarget<BlockTracker>>;
+    }
     | undefined {
     if (this.#providerProxy && this.#blockTrackerProxy) {
       return {
@@ -1162,7 +1164,7 @@ export class NetworkController extends BaseController<
     if (isInfuraNetworkType(networkClientId)) {
       const infuraNetworkClient =
         autoManagedNetworkClientRegistry[NetworkClientType.Infura][
-          networkClientId
+        networkClientId
         ];
       // This is impossible to reach
       /* istanbul ignore if */
@@ -1178,7 +1180,7 @@ export class NetworkController extends BaseController<
 
     const customNetworkClient =
       autoManagedNetworkClientRegistry[NetworkClientType.Custom][
-        networkClientId
+      networkClientId
       ];
     if (!customNetworkClient) {
       throw new Error(
@@ -1375,7 +1377,7 @@ export class NetworkController extends BaseController<
         if (
           !(error instanceof Error) ||
           error.message !==
-            'Subscription not found for event: NetworkController:networkDidChange'
+          'Subscription not found for event: NetworkController:networkDidChange'
         ) {
           // Again, this error should not happen and is impossible to reproduce
           // in tests.
@@ -1459,7 +1461,7 @@ export class NetworkController extends BaseController<
       if (
         !(error instanceof Error) ||
         error.message !==
-          'Subscription not found for event: NetworkController:networkDidChange'
+        'Subscription not found for event: NetworkController:networkDidChange'
       ) {
         throw error;
       }
@@ -1696,9 +1698,9 @@ export class NetworkController extends BaseController<
         const rpcEndpoint =
           defaultOrCustomRpcEndpointFields.type === RpcEndpointType.Custom
             ? {
-                ...defaultOrCustomRpcEndpointFields,
-                networkClientId: uuidV4(),
-              }
+              ...defaultOrCustomRpcEndpointFields,
+              networkClientId: uuidV4(),
+            }
             : defaultOrCustomRpcEndpointFields;
         return {
           type: 'add' as const,
@@ -1808,7 +1810,7 @@ export class NetworkController extends BaseController<
               newRpcEndpointFields.type === RpcEndpointType.Infura) ||
             (rpcEndpoint.type === newRpcEndpointFields.type &&
               rpcEndpoint.networkClientId ===
-                newRpcEndpointFields.networkClientId &&
+              newRpcEndpointFields.networkClientId &&
               rpcEndpoint.url === newRpcEndpointFields.url)
           );
         });
@@ -1818,7 +1820,7 @@ export class NetworkController extends BaseController<
             rpcEndpoint.type === newRpcEndpointFields.type &&
             (rpcEndpoint.url === newRpcEndpointFields.url ||
               rpcEndpoint.networkClientId ===
-                newRpcEndpointFields.networkClientId)
+              newRpcEndpointFields.networkClientId)
           );
         });
 
@@ -1898,7 +1900,7 @@ export class NetworkController extends BaseController<
           return (
             otherRpcEndpoint.type === existingRpcEndpoint.type &&
             otherRpcEndpoint.networkClientId ===
-              existingRpcEndpoint.networkClientId &&
+            existingRpcEndpoint.networkClientId &&
             otherRpcEndpoint.url === existingRpcEndpoint.url
           );
         })
@@ -1923,14 +1925,14 @@ export class NetworkController extends BaseController<
         return (
           networkClientOperation.type === 'remove' &&
           networkClientOperation.rpcEndpoint.networkClientId ===
-            this.state.selectedNetworkClientId
+          this.state.selectedNetworkClientId
         );
       }) &&
       !networkClientOperations.some((networkClientOperation) => {
         return (
           networkClientOperation.type === 'replace' &&
           networkClientOperation.oldRpcEndpoint.networkClientId ===
-            this.state.selectedNetworkClientId
+          this.state.selectedNetworkClientId
         );
       })
     ) {
@@ -1956,7 +1958,7 @@ export class NetworkController extends BaseController<
         return (
           networkClientOperation.type === 'replace' &&
           networkClientOperation.oldRpcEndpoint.networkClientId ===
-            this.state.selectedNetworkClientId
+          this.state.selectedNetworkClientId
         );
       });
     const correctedReplacementSelectedRpcEndpointIndex =
@@ -1967,7 +1969,7 @@ export class NetworkController extends BaseController<
     if (correctedReplacementSelectedRpcEndpointIndex !== undefined) {
       rpcEndpointToSelect =
         updatedNetworkConfiguration.rpcEndpoints[
-          correctedReplacementSelectedRpcEndpointIndex
+        correctedReplacementSelectedRpcEndpointIndex
         ];
 
       if (rpcEndpointToSelect === undefined) {
@@ -2134,16 +2136,16 @@ export class NetworkController extends BaseController<
     args: {
       autoManagedNetworkClientRegistry: AutoManagedNetworkClientRegistry;
     } & (
-      | {
+        | {
           mode: 'add';
           networkFields: AddNetworkFields;
         }
-      | {
+        | {
           mode: 'update';
           existingNetworkConfiguration: NetworkConfiguration;
           networkFields: UpdateNetworkFields;
         }
-    ),
+      ),
   ) {
     const { mode, networkFields, autoManagedNetworkClientRegistry } = args;
     const existingNetworkConfiguration =
@@ -2189,9 +2191,9 @@ export class NetworkController extends BaseController<
     const isInvalidDefaultBlockExplorerUrlIndex =
       networkFields.blockExplorerUrls.length > 0
         ? networkFields.defaultBlockExplorerUrlIndex === undefined ||
-          networkFields.blockExplorerUrls[
-            networkFields.defaultBlockExplorerUrlIndex
-          ] === undefined
+        networkFields.blockExplorerUrls[
+        networkFields.defaultBlockExplorerUrlIndex
+        ] === undefined
         : networkFields.defaultBlockExplorerUrlIndex !== undefined;
 
     if (isInvalidDefaultBlockExplorerUrlIndex) {
@@ -2262,7 +2264,7 @@ export class NetworkController extends BaseController<
       ).filter((networkConfiguration) =>
         existingNetworkConfiguration
           ? networkConfiguration.chainId !==
-            existingNetworkConfiguration.chainId
+          existingNetworkConfiguration.chainId
           : true,
       );
       for (const networkConfiguration of networkConfigurationsForOtherChains) {
@@ -2334,11 +2336,11 @@ export class NetworkController extends BaseController<
         throw new Error(
           mode === 'add'
             ? // This is a string.
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-              `Could not add network with chain ID ${networkFields.chainId} and Infura RPC endpoint for '${infuraNetworkNickname}' which represents ${infuraChainId}, as the two conflict`
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+            `Could not add network with chain ID ${networkFields.chainId} and Infura RPC endpoint for '${infuraNetworkNickname}' which represents ${infuraChainId}, as the two conflict`
             : // This is a string.
-              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-              `Could not update network with chain ID ${networkFields.chainId} and Infura RPC endpoint for '${infuraNetworkNickname}' which represents ${infuraChainId}, as the two conflict`,
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+            `Could not update network with chain ID ${networkFields.chainId} and Infura RPC endpoint for '${infuraNetworkNickname}' which represents ${infuraChainId}, as the two conflict`,
         );
       }
     }
@@ -2544,20 +2546,20 @@ export class NetworkController extends BaseController<
   #updateNetworkConfigurations(
     args: { state: Draft<NetworkState> } & (
       | {
-          mode: 'add';
-          networkFields: AddNetworkFields;
-          networkConfigurationToPersist: NetworkConfiguration;
-        }
+        mode: 'add';
+        networkFields: AddNetworkFields;
+        networkConfigurationToPersist: NetworkConfiguration;
+      }
       | {
-          mode: 'update';
-          networkFields: UpdateNetworkFields;
-          networkConfigurationToPersist: NetworkConfiguration;
-          existingNetworkConfiguration: NetworkConfiguration;
-        }
+        mode: 'update';
+        networkFields: UpdateNetworkFields;
+        networkConfigurationToPersist: NetworkConfiguration;
+        existingNetworkConfiguration: NetworkConfiguration;
+      }
       | {
-          mode: 'remove';
-          existingNetworkConfiguration: NetworkConfiguration;
-        }
+        mode: 'remove';
+        existingNetworkConfiguration: NetworkConfiguration;
+      }
     ),
   ) {
     const { state, mode } = args;
@@ -2566,7 +2568,7 @@ export class NetworkController extends BaseController<
       mode === 'remove' ||
       (mode === 'update' &&
         args.networkFields.chainId !==
-          args.existingNetworkConfiguration.chainId)
+        args.existingNetworkConfiguration.chainId)
     ) {
       delete state.networkConfigurationsByChainId[
         args.existingNetworkConfiguration.chainId
@@ -2713,7 +2715,7 @@ export class NetworkController extends BaseController<
     if (isInfuraNetworkType(networkClientId)) {
       const possibleAutoManagedNetworkClient =
         autoManagedNetworkClientRegistry[NetworkClientType.Infura][
-          networkClientId
+        networkClientId
         ];
 
       // This is impossible to reach
@@ -2728,7 +2730,7 @@ export class NetworkController extends BaseController<
     } else {
       const possibleAutoManagedNetworkClient =
         autoManagedNetworkClientRegistry[NetworkClientType.Custom][
-          networkClientId
+        networkClientId
         ];
 
       if (!possibleAutoManagedNetworkClient) {
