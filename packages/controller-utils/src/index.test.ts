@@ -1,6 +1,6 @@
 import * as allExports from '.';
 
-describe('@metamask/controller-utils', () => {
+describe('@danielvindax/controller-utils', () => {
   it('has expected JavaScript exports', () => {
     expect(Object.keys(allExports)).toMatchInlineSnapshot(`
       Array [

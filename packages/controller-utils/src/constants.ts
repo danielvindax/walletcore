@@ -50,6 +50,7 @@ export const TESTNET_TICKER_SYMBOLS = {
   LINEA_GOERLI: 'LineaETH',
   LINEA_SEPOLIA: 'LineaETH',
   MEGAETH_TESTNET: 'MegaETH',
+  ALLCHAIN: 'AllChain',
 };
 
 /**
@@ -110,6 +111,13 @@ export const BUILT_IN_NETWORKS = {
     ticker: NetworksTicker['megaeth-testnet'],
     rpcPrefs: {
       blockExplorerUrl: BlockExplorerUrl['megaeth-testnet'],
+    },
+  },
+  [NetworkType['allchain-mainnet']]: {
+    chainId: ChainId['allchain-mainnet'],
+    ticker: NetworksTicker['allchain-mainnet'],
+    rpcPrefs: {
+      blockExplorerUrl: BlockExplorerUrl['allchain-mainnet'],
     },
   },
   [NetworkType.rpc]: {
@@ -174,4 +182,5 @@ export const CHAIN_ID_TO_ETHERS_NETWORK_NAME_MAP: Record<
   [ChainId['linea-sepolia']]: BuiltInNetworkName.LineaSepolia,
   [ChainId['linea-mainnet']]: BuiltInNetworkName.LineaMainnet,
   [ChainId.aurora]: BuiltInNetworkName.Aurora,
+  [ChainId['allchain-mainnet']]: BuiltInNetworkName.AllchainMainnet,
 };

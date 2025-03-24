@@ -5,7 +5,7 @@ import {
   NetworkNickname,
   NetworksTicker,
   toHex,
-} from '@metamask/controller-utils';
+} from '@danielvindax/controller-utils';
 import { v4 as uuidV4 } from 'uuid';
 
 import { FakeBlockTracker } from '../../../tests/fake-block-tracker';

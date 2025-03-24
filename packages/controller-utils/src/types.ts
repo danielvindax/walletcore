@@ -8,6 +8,7 @@ export const InfuraNetworkType = {
   'linea-goerli': 'linea-goerli',
   'linea-sepolia': 'linea-sepolia',
   'linea-mainnet': 'linea-mainnet',
+  'allchain-mainnet': 'allchain-mainnet',
 } as const;
 
 export type InfuraNetworkType =
@@ -76,6 +77,7 @@ export enum BuiltInNetworkName {
   LineaMainnet = 'linea-mainnet',
   Aurora = 'aurora',
   MegaETHTestnet = 'megaeth-testnet',
+  AllchainMainnet = 'allchain-mainnet',
 }
 
 /**
@@ -92,6 +94,7 @@ export const ChainId = {
   [BuiltInNetworkName.LineaSepolia]: '0xe705', // toHex(59141)
   [BuiltInNetworkName.LineaMainnet]: '0xe708', // toHex(59144)
   [BuiltInNetworkName.MegaETHTestnet]: '0x18c6', // toHex(6342)
+  [BuiltInNetworkName.AllchainMainnet]: '0x9f2a4', // toHex(651940)
 } as const;
 export type ChainId = (typeof ChainId)[keyof typeof ChainId];
 
@@ -109,6 +112,7 @@ export enum NetworksTicker {
   'linea-sepolia' = 'LineaETH',
   'linea-mainnet' = 'ETH',
   'megaeth-testnet' = 'MegaETH',
+  'allchain-mainnet' = 'ALL',
   // TODO: Either fix this lint violation or explain why it's necessary to ignore.
   // eslint-disable-next-line @typescript-eslint/naming-convention
   rpc = '',
@@ -122,6 +126,7 @@ export const BlockExplorerUrl = {
   [BuiltInNetworkName.LineaSepolia]: 'https://sepolia.lineascan.build',
   [BuiltInNetworkName.LineaMainnet]: 'https://lineascan.build',
   [BuiltInNetworkName.MegaETHTestnet]: 'https://megaexplorer.xyz',
+  [BuiltInNetworkName.AllchainMainnet]: 'https://alltra.global',
 } as const satisfies Record<BuiltInNetworkType, string>;
 export type BlockExplorerUrl =
   (typeof BlockExplorerUrl)[keyof typeof BlockExplorerUrl];
@@ -134,6 +139,7 @@ export const NetworkNickname = {
   [BuiltInNetworkName.LineaSepolia]: 'Linea Sepolia',
   [BuiltInNetworkName.LineaMainnet]: 'Linea',
   [BuiltInNetworkName.MegaETHTestnet]: 'Mega Testnet',
+  [BuiltInNetworkName.AllchainMainnet]: 'ALL chain',
 } as const satisfies Record<BuiltInNetworkType, string>;
 export type NetworkNickname =
   (typeof NetworkNickname)[keyof typeof NetworkNickname];

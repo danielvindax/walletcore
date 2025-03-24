@@ -1,4 +1,4 @@
-import { ConstantBackoff } from '@metamask/controller-utils';
+import { ConstantBackoff } from '@danielvindax/controller-utils';
 
 import type { ProviderType } from './helpers';
 import {

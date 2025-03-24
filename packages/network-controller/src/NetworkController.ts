@@ -4,7 +4,7 @@ import type {
   RestrictedMessenger,
 } from '@metamask/base-controller';
 import { BaseController } from '@metamask/base-controller';
-import type { Partialize } from '@metamask/controller-utils';
+import type { Partialize } from '@danielvindax/controller-utils';
 import {
   InfuraNetworkType,
   NetworkType,
@@ -13,7 +13,7 @@ import {
   ChainId,
   NetworksTicker,
   NetworkNickname,
-} from '@metamask/controller-utils';
+} from '@danielvindax/controller-utils';
 import EthQuery from '@metamask/eth-query';
 import { errorCodes } from '@metamask/rpc-errors';
 import { createEventEmitterProxy } from '@metamask/swappable-obj-proxy';
@@ -120,7 +120,8 @@ export type InfuraRpcEndpoint = {
    * `{infuraProjectId}`, which will get replaced with the Infura project ID
    * when the network client is created.
    */
-  url: `https://${InfuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+  // url: `https://${InfuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+  url: string;
 };
 
 /**
@@ -632,13 +633,15 @@ function getDefaultNetworkConfigurationsByChainId(): Record<
     Record<Hex, NetworkConfiguration>
   >((obj, infuraNetworkType) => {
     const chainId = ChainId[infuraNetworkType];
-    const rpcEndpointUrl =
+    const rpcEndpointUrl = chainId === '0x9f2a4' ? 'https://mainnet-rpc.alltra.global' : `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+    // const rpcEndpointUrl =
       // This ESLint rule mistakenly produces an error.
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}` as const;
+      // `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}` as const;
 
     const networkConfiguration: NetworkConfiguration = {
-      blockExplorerUrls: [],
+      // blockExplorerUrls: [],
+      blockExplorerUrls: chainId === '0x9f2a4' ? ['https://alltra.global'] : [],
       chainId,
       defaultRpcEndpointIndex: 0,
       name: NetworkNickname[infuraNetworkType],
@@ -867,8 +870,9 @@ function deriveInfuraNetworkNameFromRpcEndpointUrl(
     }
 
     throw new Error(`Unknown Infura network '${match.groups.networkName}'`);
+  }else if(isInfuraNetworkType("allchain-mainnet")) {
+    return "allchain-mainnet";
   }
-
   throw new Error('Could not derive Infura network from RPC endpoint URL');
 }
 

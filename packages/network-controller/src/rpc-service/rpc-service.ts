@@ -1,12 +1,12 @@
 import type {
   CreateServicePolicyOptions,
   ServicePolicy,
-} from '@metamask/controller-utils';
+} from '@danielvindax/controller-utils';
 import {
   CircuitState,
   createServicePolicy,
   handleWhen,
-} from '@metamask/controller-utils';
+} from '@danielvindax/controller-utils';
 import { rpcErrors } from '@metamask/rpc-errors';
 import type { JsonRpcRequest } from '@metamask/utils';
 import {
