@@ -1,18 +1,18 @@
 {
-  "name": "@metamask/network-controller",
+  "name": "@danielvindax/network-controller",
   "version": "22.1.0",
-  "description": "Provides an interface to the currently selected network via a MetaMask-compatible provider object",
+  "description": "Provides an interface to the currently selected network via a danielvindax-compatible provider object",
   "keywords": [
-    "MetaMask",
+    "danielvindax",
     "Ethereum"
   ],
-  "homepage": "https://github.com/MetaMask/core/tree/main/packages/network-controller#readme",
+  "homepage": "https://github.com/danielvindax/walletcore/tree/main/packages/network-controller#readme",
   "bugs": {
-    "url": "https://github.com/MetaMask/core/issues"
+    "url": "https://github.com/danielvindax/walletcore/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/core.git"
+    "url": "https://github.com/danielvindax/walletcore.git"
   },
   "license": "MIT",
   "sideEffects": false,
@@ -37,8 +37,8 @@
   "scripts": {
     "build": "ts-bridge --project tsconfig.build.json --verbose --clean --no-references",
     "build:docs": "typedoc",
-    "changelog:update": "../../scripts/update-changelog.sh @metamask/network-controller",
-    "changelog:validate": "../../scripts/validate-changelog.sh @metamask/network-controller",
+    "changelog:update": "../../scripts/update-changelog.sh @danielvindax/network-controller",
+    "changelog:validate": "../../scripts/validate-changelog.sh @danielvindax/network-controller",
     "publish:preview": "yarn npm publish --tag preview",
     "since-latest-release": "../../scripts/since-latest-release.sh",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --reporters=jest-silent-reporter",
@@ -47,10 +47,10 @@
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "dependencies": {
+    "@danielvindax/controller-utils": "^11.4.4",
+    "@danielvindax/eth-json-rpc-infura": "^10.0.0",
     "@metamask/base-controller": "^7.0.2",
-    "@metamask/controller-utils": "^11.4.4",
     "@metamask/eth-block-tracker": "^11.0.2",
-    "@metamask/eth-json-rpc-infura": "^10.0.0",
     "@metamask/eth-json-rpc-middleware": "^15.0.0",
     "@metamask/eth-json-rpc-provider": "^4.1.6",
     "@metamask/eth-query": "^4.0.0",
