@@ -1,20 +1,19 @@
+import {
+  InfuraNetworkType,
+  NetworkType,
+  isSafeChainId,
+  isInfuraNetworkType,
+  ChainId,
+  NetworksTicker,
+  NetworkNickname,
+} from '@danielvindax/controller-utils';
+import type { Partialize } from '@danielvindax/controller-utils';
 import type {
   ControllerGetStateAction,
   ControllerStateChangeEvent,
   RestrictedControllerMessenger,
 } from '@metamask/base-controller';
 import { BaseController } from '@metamask/base-controller';
-import type { Partialize } from '@danielvindax/controller-utils';
-import {
-  InfuraNetworkType,
-  NetworkType,
-  isSafeChainId,
-  isInfuraNetworkType,
-  isNetworkType,
-  ChainId,
-  NetworksTicker,
-  NetworkNickname,
-} from '@danielvindax/controller-utils';
 import EthQuery from '@metamask/eth-query';
 import { errorCodes } from '@metamask/rpc-errors';
 import { createEventEmitterProxy } from '@metamask/swappable-obj-proxy';
@@ -548,11 +547,14 @@ function getDefaultNetworkConfigurationsByChainId(): Record<
     Record<Hex, NetworkConfiguration>
   >((obj, infuraNetworkType) => {
     const chainId = ChainId[infuraNetworkType];
-    const rpcEndpointUrl = chainId === '0x9f2a4' ? 'https://mainnet-rpc.alltra.global' : `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}`;
+    const rpcEndpointUrl =
+      chainId === '0x9f2a4'
+        ? 'https://mainnet-rpc.alltra.global'
+        : `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}`;
     // const rpcEndpointUrl =
-      // This ESLint rule mistakenly produces an error.
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      // `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}` as const;
+    // This ESLint rule mistakenly produces an error.
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    // `https://${infuraNetworkType}.infura.io/v3/{infuraProjectId}` as const;
 
     const networkConfiguration: NetworkConfiguration = {
       blockExplorerUrls: chainId === '0x9f2a4' ? ['https://alltra.global'] : [],
@@ -563,7 +565,7 @@ function getDefaultNetworkConfigurationsByChainId(): Record<
       rpcEndpoints: [
         {
           networkClientId: infuraNetworkType,
-          type: chainId === '0x9f2a4' ? RpcEndpointType.Custom : RpcEndpointType.Infura,
+          type: RpcEndpointType.Infura,
           url: rpcEndpointUrl,
         },
       ],
@@ -752,8 +754,8 @@ function deriveInfuraNetworkNameFromRpcEndpointUrl(
     }
 
     throw new Error(`Unknown Infura network '${match.groups.networkName}'`);
-  }else if(isInfuraNetworkType("allchain-mainnet")) {
-    return "allchain-mainnet";
+  } else if (isInfuraNetworkType('allchain-mainnet')) {
+    return 'allchain-mainnet';
   }
 
   throw new Error('Could not derive Infura network from RPC endpoint URL');
