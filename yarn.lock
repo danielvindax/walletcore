@@ -578,7 +578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@danielvindax/controller-utils@npm:^11.4.4, @danielvindax/controller-utils@workspace:packages/controller-utils":
+"@danielvindax/controller-utils@npm:^11.4.5, @danielvindax/controller-utils@workspace:packages/controller-utils":
   version: 0.0.0-use.local
   resolution: "@danielvindax/controller-utils@workspace:packages/controller-utils"
   dependencies:
@@ -607,15 +607,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@danielvindax/eth-json-rpc-infura@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@danielvindax/eth-json-rpc-infura@npm:10.0.0"
+"@danielvindax/eth-json-rpc-infura@npm:^10.0.2":
+  version: 10.0.2
+  resolution: "@danielvindax/eth-json-rpc-infura@npm:10.0.2"
   dependencies:
     "@metamask/eth-json-rpc-provider": "npm:^4.1.5"
     "@metamask/json-rpc-engine": "npm:^10.0.0"
     "@metamask/rpc-errors": "npm:^7.0.0"
     "@metamask/utils": "npm:^9.1.0"
-  checksum: 10/2d326ae74bf5606b74bcb9ce3eba7d9c5eff61e216bda5371a2b73e04eddf48a266fb83f83e9c84e3519afb90355bc9b1b2a70be899ec6d6b4f44ea170ba2599
+  checksum: 10/704ebfb9c29c60c99cfbe96130f0ea1ec9bc2f590c182d3abab6285448f78282db1ba8ee7ca09c794548cdf4f7168663537b03f18c4e023887693db21841a858
   languageName: node
   linkType: hard
 
@@ -623,8 +623,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@danielvindax/network-controller@workspace:packages/network-controller"
   dependencies:
-    "@danielvindax/controller-utils": "npm:^11.4.4"
-    "@danielvindax/eth-json-rpc-infura": "npm:^10.0.0"
+    "@danielvindax/controller-utils": "npm:^11.4.5"
+    "@danielvindax/eth-json-rpc-infura": "npm:^10.0.2"
     "@json-rpc-specification/meta-schema": "npm:^1.0.6"
     "@metamask/auto-changelog": "npm:^3.4.4"
     "@metamask/base-controller": "npm:^7.0.2"
