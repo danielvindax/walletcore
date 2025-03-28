@@ -1,6 +1,6 @@
 {
   "name": "@danielvindax/network-controller",
-  "version": "22.1.2",
+  "version": "22.1.4",
   "description": "Provides an interface to the currently selected network via a danielvindax-compatible provider object",
   "keywords": [
     "danielvindax",
@@ -47,7 +47,7 @@
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "dependencies": {
-    "@danielvindax/controller-utils": "^11.4.5",
+    "@danielvindax/controller-utils": "11.4.5",
     "@danielvindax/eth-json-rpc-infura": "^10.0.2",
     "@metamask/base-controller": "^7.0.2",
     "@metamask/eth-block-tracker": "^11.0.2",
