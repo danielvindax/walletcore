@@ -2,13 +2,14 @@
  * The names of built-in Infura networks
  */
 export const InfuraNetworkType = {
+  'allchain-mainnet': 'allchain-mainnet',
+  'allchain-testnet': 'allchain-testnet',
   mainnet: 'mainnet',
   goerli: 'goerli',
   sepolia: 'sepolia',
   'linea-goerli': 'linea-goerli',
   'linea-sepolia': 'linea-sepolia',
   'linea-mainnet': 'linea-mainnet',
-  'allchain-mainnet': 'allchain-mainnet',
 } as const;
 
 export type InfuraNetworkType =
@@ -62,6 +63,7 @@ export enum BuiltInNetworkName {
   LineaMainnet = 'linea-mainnet',
   Aurora = 'aurora',
   AllchainMainnet = 'allchain-mainnet',
+  AllchainTestnet = 'allchain-testnet',
 }
 
 /**
@@ -70,6 +72,8 @@ export enum BuiltInNetworkName {
  * `toHex` not invoked to avoid cyclic dependency
  */
 export const ChainId = {
+  [BuiltInNetworkName.AllchainMainnet]: '0x9f2a4', // toHex(651940)
+  [BuiltInNetworkName.AllchainTestnet]: '0xF3C13', // toHex(651941)
   [BuiltInNetworkName.Mainnet]: '0x1', // toHex(1)
   [BuiltInNetworkName.Goerli]: '0x5', // toHex(5)
   [BuiltInNetworkName.Sepolia]: '0xaa36a7', // toHex(11155111)
@@ -77,7 +81,6 @@ export const ChainId = {
   [BuiltInNetworkName.LineaGoerli]: '0xe704', // toHex(59140)
   [BuiltInNetworkName.LineaSepolia]: '0xe705', // toHex(59141)
   [BuiltInNetworkName.LineaMainnet]: '0xe708', // toHex(59144)
-  [BuiltInNetworkName.AllchainMainnet]: '0x9f2a4', // toHex(651940)
 } as const;
 export type ChainId = (typeof ChainId)[keyof typeof ChainId];
 
@@ -95,31 +98,34 @@ export enum NetworksTicker {
   'linea-sepolia' = 'LineaETH',
   'linea-mainnet' = 'ETH',
   'allchain-mainnet' = 'ALL',
+  'allchain-testnet' = 'ALL',
   // TODO: Either fix this lint violation or explain why it's necessary to ignore.
   // eslint-disable-next-line @typescript-eslint/naming-convention
   rpc = '',
 }
 
 export const BlockExplorerUrl = {
+  [BuiltInNetworkName.AllchainMainnet]: 'https://alltra.global',
+  [BuiltInNetworkName.AllchainTestnet]: 'https://testnet-explorer.alltra.global',
   [BuiltInNetworkName.Mainnet]: 'https://etherscan.io',
   [BuiltInNetworkName.Goerli]: 'https://goerli.etherscan.io',
   [BuiltInNetworkName.Sepolia]: 'https://sepolia.etherscan.io',
   [BuiltInNetworkName.LineaGoerli]: 'https://goerli.lineascan.build',
   [BuiltInNetworkName.LineaSepolia]: 'https://sepolia.lineascan.build',
   [BuiltInNetworkName.LineaMainnet]: 'https://lineascan.build',
-  [BuiltInNetworkName.AllchainMainnet]: 'https://alltra.global',
 } as const satisfies Record<InfuraNetworkType, string>;
 export type BlockExplorerUrl =
   (typeof BlockExplorerUrl)[keyof typeof BlockExplorerUrl];
 
 export const NetworkNickname = {
+  [BuiltInNetworkName.AllchainMainnet]: 'ALL Chain',
+  [BuiltInNetworkName.AllchainTestnet]: 'ALL Testnet',
   [BuiltInNetworkName.Mainnet]: 'Ethereum Mainnet',
   [BuiltInNetworkName.Goerli]: 'Goerli',
   [BuiltInNetworkName.Sepolia]: 'Sepolia',
   [BuiltInNetworkName.LineaGoerli]: 'Linea Goerli',
   [BuiltInNetworkName.LineaSepolia]: 'Linea Sepolia',
   [BuiltInNetworkName.LineaMainnet]: 'Linea',
-  [BuiltInNetworkName.AllchainMainnet]: 'ALL chain',
 } as const satisfies Record<InfuraNetworkType, string>;
 export type NetworkNickname =
   (typeof NetworkNickname)[keyof typeof NetworkNickname];

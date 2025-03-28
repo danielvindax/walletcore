@@ -103,6 +103,13 @@ export const BUILT_IN_NETWORKS = {
       blockExplorerUrl: 'https://alltra.global',
     },
   },
+  [NetworkType['allchain-testnet']]: {
+    chainId: ChainId['allchain-testnet'],
+    ticker: NetworksTicker['allchain-testnet'],
+    rpcPrefs: {
+      blockExplorerUrl: 'https://testnet-explorer.alltra.global',
+    },
+  },
   [NetworkType.rpc]: {
     chainId: undefined,
     blockExplorerUrl: undefined,
@@ -161,5 +168,6 @@ export const CHAIN_ID_TO_ETHERS_NETWORK_NAME_MAP: Record<
   [ChainId['linea-sepolia']]: BuiltInNetworkName.LineaSepolia,
   [ChainId['linea-mainnet']]: BuiltInNetworkName.LineaMainnet,
   [ChainId['allchain-mainnet']]: BuiltInNetworkName.AllchainMainnet,
+  [ChainId['allchain-testnet']]: BuiltInNetworkName.AllchainMainnet,
   [ChainId.aurora]: BuiltInNetworkName.Aurora,
 };
