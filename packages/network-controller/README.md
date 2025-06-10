@@ -1,15 +1,15 @@
-# `@metamask/network-controller`
+# `@danielvindax/network-controller`
 
 Provides an interface to the currently selected network via a MetaMask-compatible provider object.
 
 ## Installation
 
-`yarn add @metamask/network-controller`
+`yarn add @danielvindax/network-controller`
 
 or
 
-`npm install @metamask/network-controller`
+`npm install @danielvindax/network-controller`
 
 ## Contributing
 
-This package is part of a monorepo. Instructions for contributing can be found in the [monorepo README](https://github.com/MetaMask/core#readme).
+This package is part of a monorepo. Instructions for contributing can be found in the [monorepo README](https://github.com/danielvindax/walletcore#readme).

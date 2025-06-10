@@ -1,6 +1,6 @@
 import type { JSONRPCResponse } from '@json-rpc-specification/meta-schema';
-import type { InfuraNetworkType } from '@metamask/controller-utils';
-import { BUILT_IN_NETWORKS } from '@metamask/controller-utils';
+import type { InfuraNetworkType } from '@danielvindax/controller-utils';
+import { BUILT_IN_NETWORKS } from '@danielvindax/controller-utils';
 import type { SafeEventEmitterProvider } from '@metamask/eth-json-rpc-provider';
 import EthQuery from '@metamask/eth-query';
 import type { Hex } from '@metamask/utils';
@@ -495,7 +495,7 @@ export async function withNetworkClient(
   // Faking timers ends up doing two things:
   // 1. Halting the block tracker (which depends on `setTimeout` to periodically
   // request the latest block) set up in `eth-json-rpc-middleware`
-  // 2. Halting the retry logic in `@metamask/eth-json-rpc-infura` (which also
+  // 2. Halting the retry logic in `@danielvindax/eth-json-rpc-infura` (which also
   // depends on `setTimeout`)
   const clock = sinon.useFakeTimers();
 

@@ -112,6 +112,13 @@ export const BUILT_IN_NETWORKS = {
       blockExplorerUrl: BlockExplorerUrl['megaeth-testnet'],
     },
   },
+  [NetworkType['5dax-mainnet']]: {
+    chainId: ChainId['5dax-mainnet'],
+    ticker: NetworksTicker['5dax-mainnet'],
+    rpcPrefs: {
+      blockExplorerUrl: BlockExplorerUrl['5dax-mainnet'],
+    },
+  },
   [NetworkType.rpc]: {
     chainId: undefined,
     blockExplorerUrl: undefined,
@@ -174,4 +181,5 @@ export const CHAIN_ID_TO_ETHERS_NETWORK_NAME_MAP: Record<
   [ChainId['linea-sepolia']]: BuiltInNetworkName.LineaSepolia,
   [ChainId['linea-mainnet']]: BuiltInNetworkName.LineaMainnet,
   [ChainId.aurora]: BuiltInNetworkName.Aurora,
+  [ChainId['5dax-mainnet']]: BuiltInNetworkName.FiveDaxMainnet,
 };

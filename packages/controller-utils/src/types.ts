@@ -8,6 +8,7 @@ export const InfuraNetworkType = {
   'linea-goerli': 'linea-goerli',
   'linea-sepolia': 'linea-sepolia',
   'linea-mainnet': 'linea-mainnet',
+  '5dax-mainnet': '5dax-mainnet',
 } as const;
 
 export type InfuraNetworkType =
@@ -76,6 +77,7 @@ export enum BuiltInNetworkName {
   LineaMainnet = 'linea-mainnet',
   Aurora = 'aurora',
   MegaETHTestnet = 'megaeth-testnet',
+  FiveDaxMainnet = '5dax-mainnet',
 }
 
 /**
@@ -92,6 +94,7 @@ export const ChainId = {
   [BuiltInNetworkName.LineaSepolia]: '0xe705', // toHex(59141)
   [BuiltInNetworkName.LineaMainnet]: '0xe708', // toHex(59144)
   [BuiltInNetworkName.MegaETHTestnet]: '0x18c6', // toHex(6342)
+  [BuiltInNetworkName.FiveDaxMainnet]: '0x7d6', // toHex(2006)
 } as const;
 export type ChainId = (typeof ChainId)[keyof typeof ChainId];
 
@@ -109,6 +112,7 @@ export enum NetworksTicker {
   'linea-sepolia' = 'LineaETH',
   'linea-mainnet' = 'ETH',
   'megaeth-testnet' = 'MegaETH',
+  '5dax-mainnet' = 'FDX',
   // TODO: Either fix this lint violation or explain why it's necessary to ignore.
   // eslint-disable-next-line @typescript-eslint/naming-convention
   rpc = '',
@@ -122,6 +126,7 @@ export const BlockExplorerUrl = {
   [BuiltInNetworkName.LineaSepolia]: 'https://sepolia.lineascan.build',
   [BuiltInNetworkName.LineaMainnet]: 'https://lineascan.build',
   [BuiltInNetworkName.MegaETHTestnet]: 'https://megaexplorer.xyz',
+  [BuiltInNetworkName.FiveDaxMainnet]: 'https://scan.5dax.com',
 } as const satisfies Record<BuiltInNetworkType, string>;
 export type BlockExplorerUrl =
   (typeof BlockExplorerUrl)[keyof typeof BlockExplorerUrl];
@@ -134,6 +139,7 @@ export const NetworkNickname = {
   [BuiltInNetworkName.LineaSepolia]: 'Linea Sepolia',
   [BuiltInNetworkName.LineaMainnet]: 'Linea',
   [BuiltInNetworkName.MegaETHTestnet]: 'Mega Testnet',
+  [BuiltInNetworkName.FiveDaxMainnet]: '5DAX',
 } as const satisfies Record<BuiltInNetworkType, string>;
 export type NetworkNickname =
   (typeof NetworkNickname)[keyof typeof NetworkNickname];
