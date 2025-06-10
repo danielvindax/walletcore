@@ -73,7 +73,7 @@ export enum BuiltInNetworkName {
  */
 export const ChainId = {
   [BuiltInNetworkName.AllchainMainnet]: '0x9f2a4', // toHex(651940)
-  [BuiltInNetworkName.AllchainTestnet]: '0xF3C13', // toHex(651941)
+  [BuiltInNetworkName.AllchainTestnet]: '0xf3c13', // toHex(651941)
   [BuiltInNetworkName.Mainnet]: '0x1', // toHex(1)
   [BuiltInNetworkName.Goerli]: '0x5', // toHex(5)
   [BuiltInNetworkName.Sepolia]: '0xaa36a7', // toHex(11155111)
