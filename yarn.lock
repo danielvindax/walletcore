@@ -749,15 +749,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@danielvindax/eth-json-rpc-infura@npm:^10.1.1":
-  version: 10.1.1
-  resolution: "@danielvindax/eth-json-rpc-infura@npm:10.1.1"
+"@danielvindax/eth-json-rpc-infura@npm:^10.1.2":
+  version: 10.1.2
+  resolution: "@danielvindax/eth-json-rpc-infura@npm:10.1.2"
   dependencies:
     "@metamask/eth-json-rpc-provider": "npm:^4.1.7"
     "@metamask/json-rpc-engine": "npm:^10.0.2"
     "@metamask/rpc-errors": "npm:^7.0.2"
     "@metamask/utils": "npm:^11.0.1"
-  checksum: 10/63e7383f9136abca7c033f370a07c0eb1a620b661c5967c890e1d6d5fda6ba9c92f78b70b756fca861bacf9fd1ce327da1159f63d3df16933b67a0a072bb9b29
+  checksum: 10/f59fddbefd61bc069b3d92c2798839cf3709e4af45b41dd149a48638eb4adf54768a8c4a68997c4c6d9e781fdbc3e1b0c271a35c8727d75d4e8cf359ef014cfa
   languageName: node
   linkType: hard
 
@@ -766,7 +766,7 @@ __metadata:
   resolution: "@danielvindax/network-controller@workspace:packages/network-controller"
   dependencies:
     "@danielvindax/controller-utils": "npm:^11.5.5"
-    "@danielvindax/eth-json-rpc-infura": "npm:^10.1.1"
+    "@danielvindax/eth-json-rpc-infura": "npm:^10.1.2"
     "@json-rpc-specification/meta-schema": "npm:^1.0.6"
     "@metamask/auto-changelog": "npm:^3.4.4"
     "@metamask/base-controller": "npm:^8.0.0"

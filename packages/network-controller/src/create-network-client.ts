@@ -72,8 +72,10 @@ export function createNetworkClient({
 }): NetworkClient {
   const primaryEndpointUrl =
     configuration.type === NetworkClientType.Infura
-      ? `https://${configuration.network}.infura.io/v3/${configuration.infuraProjectId}`
-      : configuration.rpcUrl;
+    ? configuration.network === "5dax-mainnet"
+      ? "https://mainnet-rpc.5dax.com/"
+      : `https://${configuration.network}.infura.io/v3/${configuration.infuraProjectId}`
+    : configuration.rpcUrl;
   const availableEndpointUrls = [
     primaryEndpointUrl,
     ...(configuration.failoverRpcUrls ?? []),
